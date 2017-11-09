@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeInfo from './HomeInfo.js';
+import HamburgerMenu from './HamburgerMenu.js';
 import './App.css';
 import background from './Assets/background.jpg';
 
@@ -9,17 +10,19 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='outer-container'>
+        <HamburgerMenu className='Burger-Menu' />
         <div className="App" style={{
           display: 'flex',
           backgroundImage:"url("+background+")",
           backgroundSize: 'cover',
           flexDirection: 'column',
-         height:'90vh',
-          alignItems: 'center'
+          height:'90vh',
+          alignItems: 'center',
+         
         }} >
           <div >
-            <Navbar style={{ backgroundColor: "rgba(255,255,255,0.7)", borderWidth: 0, alignContent: 'center', }} >
+            <Navbar className='Navbar'  >
               <Navbar.Header>
                 <Navbar.Brand >
                   <a href="#" >HauyMilk</a>
@@ -37,10 +40,10 @@ class App extends Component {
                 </NavDropdown>
               </Nav>
             </Navbar>
-
+          
           </div>
           <Image src={process.env.PUBLIC_URL + '/logo.png'} style={{ width: '10vw', height: this.width, marginTop:'20vh' }} />
-          <Button style={{ width: '8vw', height: '3vw', backgroundColor: "rgba(255,0,0,0.6)",marginTop:'30vh',borderWidth:0,color:'white',fonrSize:'2vh' }}>ORDER</Button>
+          <Button className='order-button'>ORDER</Button>
 
         </div>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>

@@ -1,5 +1,29 @@
+.order-button{
+  width: 8vw;
+
+  height: 3vw;
+
+  background-color: rgba(255,0,0,0.6);
+  margin-top:30vh;
+  border-width:0;
+  color:'white';
+  font-size:2vh;
+
+}
+
+
+.Navbar{
+  background-color: rgba(255,255,255,0.7);
+  border-width: 0;
+  align-content: center;
+  visibility: initial;
+} 
+
+
 .App {
   text-align: center;
+  overflow: auto;
+  
 }
 
 .App-logo {
@@ -32,3 +56,12 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+@media only screen and (max-width: 800px){
+  .Navbar{
+      display: none;
+  }
+  .BurgerMenu{
+    visibility: visible;
+  }
+}
