@@ -13,12 +13,10 @@ class App extends Component {
       <div className='outer-container'>
         <HamburgerMenu className='Burger-Menu' />
         <div className="App" style={{
-          display: 'flex',
+          
           backgroundImage:"url("+background+")",
           backgroundSize: 'cover',
-          flexDirection: 'column',
-          height:'90vh',
-          alignItems: 'center',
+          
          
         }} >
           <div >
@@ -42,7 +40,7 @@ class App extends Component {
             </Navbar>
           
           </div>
-          <Image src={process.env.PUBLIC_URL + '/logo.png'} style={{ width: '10vw', height: this.width, marginTop:'20vh' }} />
+          <Image className='logo' src={process.env.PUBLIC_URL + '/logo.png'}  />
           <Button className='order-button'>ORDER</Button>
 
         </div>
