@@ -3,10 +3,25 @@ import HomeInfo from './HomeInfo.js';
 import HamburgerMenu from './HamburgerMenu.js';
 import './App.css';
 import background from './Assets/background.jpg';
+import firebaseConfig from './firebaseConfig.js';
 
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, Image } from 'react-bootstrap';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={listItem:[]};
+  }
+  componentWillMount(){
+    /* Create reference to messages in Firebase Database */
+    let listItem = firebaseConfig.database().ref('Products');
+    listItem.on('child_added', snapshot => {
+      /* Update React state when message is added at Firebase Database */
+      let Item = { price: snapshot.val().price, id: snapshot.key };
+      this.setState({ listItem: [Item].concat(this.state.listItem) });
+    })
+  }
 
   render() {
     return (
@@ -46,7 +61,13 @@ class App extends Component {
         </div>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
           <HomeInfo />
+
         </div>
+        <ul>
+          { /* Render the list of messages */
+            this.state.listItem.map( Item => <li key={Item.id}>{Item.price}</li> )
+          }
+        </ul>
       </div>
     );
   }

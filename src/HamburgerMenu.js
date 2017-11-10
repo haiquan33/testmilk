@@ -48,11 +48,11 @@ class HamburgerMenu extends Component {
            <div>
             <MenuWrap wait={20} side={'left'}>
                 <Menu left  className='bm-burger-button' left id={'slide'} pageWrapId={'App'} outerContainerId={'outer-container'} >
-                    <a key="0" href=""><i className="fa fa-fw fa-star-o" /><span>Products</span></a>
-                    <a key="1" href=""><i className="fa fa-fw fa-bell-o" /><span>Promotions</span></a>
-                    <a key="2" href=""><i className="fa fa-fw fa-envelope-o" /><span>Daily Meal</span></a>
-                    <a key="3" href=""><i className="fa fa-fw fa-comment-o" /><span>Subscribe</span></a>
-                    <a key="4" href=""><i className="fa fa-fw fa-bar-chart-o" /><span>Contact</span></a>
+                    <a key="0" href=""><i className="bm-item" /><span>Products</span></a>
+                    <a key="1" href=""><i className="bm-item" /><span>Promotions</span></a>
+                    <a key="2" href=""><i className="bm-item" /><span>Daily Meal</span></a>
+                    <a key="3" href=""><i className="bm-item" /><span>Subscribe</span></a>
+                    <a key="4" href=""><i className="bm-item" /><span>Contact</span></a>
                  
                 </Menu>
             </MenuWrap>
