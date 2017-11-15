@@ -42,11 +42,11 @@ class App extends Component {
                 </Navbar.Brand>
               </Navbar.Header>
               <Nav >
-                <NavItem eventKey={1} href="#" >Products</NavItem>
-                <NavItem eventKey={2} href="#">Promotions</NavItem>
-                <NavDropdown eventKey={3} title="More" id="basic-nav-dropdown">
-                  <MenuItem eventKey={3.1}>Daily Set</MenuItem>
-                  <MenuItem eventKey={3.2}>Contact</MenuItem>
+                <NavItem eventKey={1} href="#"  >Sản phẩm</NavItem>
+                <NavItem eventKey={2} href="#">Khuyến mãi</NavItem>
+                <NavDropdown eventKey={3} title="Khác" id="basic-nav-dropdown">
+                  <MenuItem eventKey={3.1}>Thực đơn hàng ngày</MenuItem>
+                  <MenuItem eventKey={3.2}>Liên hệ</MenuItem>
                   <MenuItem eventKey={3.3}>Something else here</MenuItem>
                   <MenuItem divider />
                   <MenuItem eventKey={3.4}>Contact</MenuItem>
@@ -56,7 +56,7 @@ class App extends Component {
           
           </div>
           <Image className='logo' src={process.env.PUBLIC_URL + '/logo.png'}  />
-          <Button className='order-button'>ORDER</Button>
+          <Button className='order-button'>ĐẶT NGAY</Button>
 
         </div>
         <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
