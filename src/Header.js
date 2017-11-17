@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Image} from 'react-bootstrap';
-class HomeInfo extends Component{
+class Header extends Component{
     render(){
         return(
-        <div style={{ width:'70%', margin:20}}>
+        <div style={{width:'70%', margin:20}}>
             <label style={StyleTitle}>Home</label>
             <div style={{display:'flex',flexDirection:'row'}}>
                 <p style={{width:'40%'}}>
@@ -16,9 +16,4 @@ class HomeInfo extends Component{
     }
 }
 
-const StyleTitle={
-        fontSize:30,
-        fontColor:'black',
-        fontFamily:'Montserrat'
-}
-export default HomeInfo;
+export default Header;
