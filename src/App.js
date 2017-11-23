@@ -53,7 +53,7 @@ class App extends Component {
               <Navbar className='Navbar'  >
                 <Navbar.Header>
                   <Navbar.Brand >
-                    <a href="/" >HauyMilk {this.props.num}</a>
+                    <a href="/" >HauyMilk </a>
                   </Navbar.Brand>
                 </Navbar.Header>
                 <Nav >
