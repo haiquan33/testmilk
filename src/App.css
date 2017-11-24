@@ -1,4 +1,7 @@
 .order-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 8vw;
   min-width: 100px;
   height: 3vw;
@@ -8,16 +11,19 @@
 
   position: absolute;
   
-  
+
+
+
   top:90%;
   left:50%;
   transform: translate(-50%, -50%);
   border-width:0;
   color:'white';
-  font-size:15px;
+ 
   color: white;
   
-
+  font-family: iCiel-Altus;
+  font-size: 30px;
 }
 
 .logo{
@@ -97,6 +103,36 @@
   font-family: 'Montserrat', cursive;
   src: url('https://fonts.googleapis.com/css?family=Montserrat')
 }
+
+
+@font-face {
+  font-family: 'iCiel-Altus';
+  src:url('./Assets/Fonts/iCiel-Altus.otf') format('opentype');
+  
+}
+
+@font-face {
+  font-family: 'iCielNovecentosans-Light';
+  src:url('./Assets/Fonts/iCielNovecentosans-Light.otf') format('opentype');
+  
+}
+
+@font-face {
+  font-family: 'iCielNovecentosans-Medium';
+  src:url('./Assets/Fonts/iCielNovecentosans-Medium.otf') format('opentype');
+  
+}
+
+@font-face {
+  font-family: 'UTM-Aptima';
+  src:url('./Assets/Fonts/UTM-Aptima.ttf') format('truetype');
+  
+}
+
+body {
+  font-family: 'Open Sans';
+}
+
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 

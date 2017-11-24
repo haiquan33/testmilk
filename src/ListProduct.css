@@ -1,0 +1,17 @@
+.List-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap; 
+    width:'70%';
+    align-items:center;
+    justify-content:center;
+    align-content: center;
+    margin:10px
+}
+
+@media only screen and (max-width:800px){
+    .Item-container{
+        float: none;
+        width: 100%;
+    }
+}

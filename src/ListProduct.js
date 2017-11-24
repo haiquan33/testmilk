@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 import ProductItem from './Product_Item.js';
-
+import './ListProduct.css';
 class ListProduct extends Component{
     render(){
         return(
-        <div style={{ display:'flex',flexDirection:'row', width:'70%', alignItems:'center',justifyContent:'center'}}>
+        <div className='List-container' >
            <ProductItem />
            <ProductItem />
            <ProductItem />
