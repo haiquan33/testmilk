@@ -21,25 +21,52 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { listItem: [] };
-    this.getListItem=this.getListItem.bind(this);
+    this.state = { listItem: [], Nav_class_Name: "HeaderBar" };
+    this.getListItem = this.getListItem.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
-  
+
   componentWillMount() {
     this.getListItem();
+    window.removeEventListener('scroll', this.handleScroll);
+
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+  handleScroll() {
+
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      this.setState({
+        Nav_class_Name: "HeaderBar-shrink"
+      })
+    }
+    else {
+      this.setState({
+        Nav_class_Name: "HeaderBar"
+      })
+    }
+
   }
 
   handleSelect(selectedKey) {
-     
-      //Element.scrollIntoView('#Content_section', 1000);
-      //document.getElementById('Content_section').scrollIntoView();
+
+    //Element.scrollIntoView('#Content_section', 1000);
+    //document.getElementById('Content_section').scrollIntoView();
+    // document.ready(function(){
+    //   window.scroll(function(){
+    //       if (document.scrollTop()>10){
+    //         document.getElementById('Navbar').addClass('shrink')
+    //       }
+    //   })
+    // })
   }
-  getListItem(){
+  getListItem() {
     /* Create reference to messages in Firebase Database */
     let listItem = firebaseConfig.database().ref('Products');
     listItem.on('child_added', snapshot => {
       /* Update React state when message is added at Firebase Database */
-      let Item = { price: snapshot.val().price, name: snapshot.val().name,quantity:0 };
+      let Item = { price: snapshot.val().price, name: snapshot.val().name, quantity: 0 };
       this.setState({ listItem: [Item].concat(this.state.listItem) });
       this.props.dispatch({ type: 'SET_PRODUCT_LIST', product_list: this.state.listItem });
     })
@@ -49,42 +76,43 @@ class App extends Component {
       <Router>
         <div className='outer-container'>
           <HamburgerMenu className='Burger-Menu' />
+
           <div className="App" style={{
             backgroundImage: "url(" + background + ")",
             backgroundSize: 'cover',
           }} >
-            <div >
-              <Navbar className='Navbar'  >
-                <Navbar.Header>
-                  <Navbar.Brand >
-                    <a href="/" >HauyMilk </a>
-                  </Navbar.Brand>
-                </Navbar.Header>
-                <Nav >
-                  <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
-                  <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
-                  <NavDropdown eventKey={3} title="Khác" id="basic-nav-dropdown">
-                    <MenuItem eventKey={3.1}>Thực đơn hàng ngày</MenuItem>
-                    <MenuItem eventKey={3.2}>Liên hệ</MenuItem>
-                    <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                    <MenuItem divider />
-                    <MenuItem eventKey={3.4}>Contact</MenuItem>
-                  </NavDropdown>
-                </Nav>
-              </Navbar>
 
-            </div>
             <Image className='logo' src={process.env.PUBLIC_URL + '/logo.png'} />
             <Button className='order-button' onClick={() => this.props.dispatch({ type: 'ADD' })}>ĐẶT NGAY</Button>
 
           </div>
-          <section className='Section' id ='Content_section'>
+          <section className='Section' id='Content_section'>
             <Switch style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Route exact path='/' component={null} />
               <Route exact path='/ListProduct' component={ListProduct} />
             </Switch>
           </section>
+          <div className={this.state.Nav_class_Name} >
+            <Navbar className="Navbar"  >
+              <Navbar.Header>
+                <Navbar.Brand >
+                  <a href="/" >HauyMilk </a>
+                </Navbar.Brand>
+              </Navbar.Header>
+              <Nav >
+                <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
+                <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
+                <NavDropdown eventKey={3} title="Khác" id="basic-nav-dropdown">
+                  <MenuItem eventKey={3.1}>Thực đơn hàng ngày</MenuItem>
+                  <MenuItem eventKey={3.2}>Liên hệ</MenuItem>
+                  <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                  <MenuItem divider />
+                  <MenuItem eventKey={3.4}>Contact</MenuItem>
+                </NavDropdown>
+              </Nav>
+            </Navbar>
 
+          </div>
 
         </div>
       </Router>
