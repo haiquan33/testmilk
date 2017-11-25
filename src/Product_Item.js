@@ -13,11 +13,11 @@ export default class ProductItem extends Component {
                    
                 }}>
                     <div  className="button_add_to_cart"><button><img src={require('./Assets/add-to-cart.png') } /> </button></div>
-                    <div className="Item-name">Sữa đậu nành</div>
-                    <div className="Item-price">5000 VNĐ/chai</div>
+                    <div className="Item-name">{this.props.item.name}</div>
+                    <div className="Item-price">{this.props.item.price} VNĐ/chai</div>
                     <div style={{display:'flex',flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'center',marginTop:20}}>
                             <div className="button_quantity"><img src={require('./Assets/plus.png') } /> </div>
-                            <div className="quantity">10</div>
+                            <div className="quantity">{this.props.item.quantity}</div>
                             <div className="button_quantity"><img src={require('./Assets/minus.png') } /> </div>
                     </div>
                 </div>

@@ -56,10 +56,15 @@
 }
 .navbar-default .navbar-header .navbar-brand {
   color: white;
+  font-family: iCiel-Altus;
+  font-size: 40px;
 }
 
 .Link{
   color: white;
+  font-family: iCielNovecentosans-Light;
+  font-size: 15px;
+
 }
 
 

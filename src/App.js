@@ -22,16 +22,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { listItem: [] };
+    this.getListItem=this.getListItem.bind(this);
   }
+  
   componentWillMount() {
-    /* Create reference to messages in Firebase Database */
-    let listItem = firebaseConfig.database().ref('Products');
-    listItem.on('child_added', snapshot => {
-      /* Update React state when message is added at Firebase Database */
-      let Item = { price: snapshot.val().price, name: snapshot.val().name };
-      this.setState({ listItem: [Item].concat(this.state.listItem) });
-      this.props.dispatch({ type: 'SET_PRODUCT_LIST', product_list: this.state.listItem });
-    })
+    this.getListItem();
   }
 
   handleSelect(selectedKey) {
@@ -39,7 +34,16 @@ class App extends Component {
       //Element.scrollIntoView('#Content_section', 1000);
       //document.getElementById('Content_section').scrollIntoView();
   }
-
+  getListItem(){
+    /* Create reference to messages in Firebase Database */
+    let listItem = firebaseConfig.database().ref('Products');
+    listItem.on('child_added', snapshot => {
+      /* Update React state when message is added at Firebase Database */
+      let Item = { price: snapshot.val().price, name: snapshot.val().name,quantity:0 };
+      this.setState({ listItem: [Item].concat(this.state.listItem) });
+      this.props.dispatch({ type: 'SET_PRODUCT_LIST', product_list: this.state.listItem });
+    })
+  }
   render() {
     return (
       <Router>
@@ -58,7 +62,7 @@ class App extends Component {
                 </Navbar.Header>
                 <Nav >
                   <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
-                  <NavItem eventKey={2} href="#">Khuyến mãi</NavItem>
+                  <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
                   <NavDropdown eventKey={3} title="Khác" id="basic-nav-dropdown">
                     <MenuItem eventKey={3.1}>Thực đơn hàng ngày</MenuItem>
                     <MenuItem eventKey={3.2}>Liên hệ</MenuItem>
