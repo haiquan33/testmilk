@@ -37,6 +37,7 @@
         width: 100%;
         height: 100%;
       padding: 0;
+      visibility: hidden;
   }
   
   .button_add_to_cart button img{

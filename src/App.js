@@ -36,6 +36,7 @@ class App extends Component {
   }
   handleScroll() {
 
+    //Change the UI of headerBar when scroll
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       this.setState({
         Nav_class_Name: "HeaderBar-shrink"
@@ -66,7 +67,7 @@ class App extends Component {
     let listItem = firebaseConfig.database().ref('Products');
     listItem.on('child_added', snapshot => {
       /* Update React state when message is added at Firebase Database */
-      let Item = { price: snapshot.val().price, name: snapshot.val().name, quantity: 0 };
+      let Item = {id:snapshot.val().id, price: snapshot.val().price,  name: snapshot.val().name, quantity: 0 };
       this.setState({ listItem: [Item].concat(this.state.listItem) });
       this.props.dispatch({ type: 'SET_PRODUCT_LIST', product_list: this.state.listItem });
     })
@@ -94,21 +95,16 @@ class App extends Component {
           </section>
           <div className={this.state.Nav_class_Name} >
             <Navbar className="Navbar"  >
-              <Navbar.Header>
-                <Navbar.Brand >
-                  <a href="/" >HauyMilk </a>
-                </Navbar.Brand>
-              </Navbar.Header>
+             
               <Nav >
                 <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
                 <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
-                <NavDropdown eventKey={3} title="Khác" id="basic-nav-dropdown">
-                  <MenuItem eventKey={3.1}>Thực đơn hàng ngày</MenuItem>
-                  <MenuItem eventKey={3.2}>Liên hệ</MenuItem>
-                  <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                  <MenuItem divider />
-                  <MenuItem eventKey={3.4}>Contact</MenuItem>
-                </NavDropdown>
+                <Navbar.Brand >
+                  <a href="/" >HauyMilk </a>
+                </Navbar.Brand>
+                <NavItem eventKey={3} href="#"><Link className='Link' to="/ListProduct" >Thực đơn hàng ngày</Link></NavItem>
+                <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Liên hệ</Link></NavItem>
+               
               </Nav>
             </Navbar>
 
