@@ -11,6 +11,7 @@ import './App.css';
 
 
 import background from './Assets/background.jpg';
+import cart_ico from './Assets/cart.png';
 import firebaseConfig from './firebaseConfig.js';
 
 
@@ -67,7 +68,12 @@ class App extends Component {
     let listItem = firebaseConfig.database().ref('Products');
     listItem.on('child_added', snapshot => {
       /* Update React state when message is added at Firebase Database */
-      let Item = {id:snapshot.val().id, price: snapshot.val().price,  name: snapshot.val().name, quantity: 0 };
+      let Item = { 
+                  id: snapshot.val().id,
+                  price: snapshot.val().price, 
+                  name: snapshot.val().name, 
+                  img:snapshot.val().img,
+                  quantity: 0 };
       this.setState({ listItem: [Item].concat(this.state.listItem) });
       this.props.dispatch({ type: 'SET_PRODUCT_LIST', product_list: this.state.listItem });
     })
@@ -95,7 +101,7 @@ class App extends Component {
           </section>
           <div className={this.state.Nav_class_Name} >
             <Navbar className="Navbar"  >
-             
+
               <Nav >
                 <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
                 <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
@@ -104,12 +110,15 @@ class App extends Component {
                 </Navbar.Brand>
                 <NavItem eventKey={3} href="#"><Link className='Link' to="/ListProduct" >Thực đơn hàng ngày</Link></NavItem>
                 <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Liên hệ</Link></NavItem>
-               
+
               </Nav>
             </Navbar>
-
+          
           </div>
-
+          <div className="Cart-button" style={{
+            backgroundImage: "url("+cart_ico+")",
+            backgroundSize: 'cover',
+          }}/>
         </div>
       </Router>
     );
