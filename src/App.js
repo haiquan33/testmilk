@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button, Image } from 'react-bootstrap';
-import { Provider, connect } from 'react-redux';
+import { Navbar, Nav, NavItem,Button, Image } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import HomeInfo from './HomeInfo.js';
 import ListProduct from './ListProduct.js';
 import HamburgerMenu from './HamburgerMenu.js';
-
+import Cart_button from './Cart-button.js';
 import './App.css';
 
 
 import background from './Assets/background.jpg';
-import cart_ico from './Assets/cart.png';
+
 import firebaseConfig from './firebaseConfig.js';
 
 
@@ -90,7 +90,7 @@ class App extends Component {
           }} >
 
             <Image className='logo' src={process.env.PUBLIC_URL + '/logo.png'} />
-            <Button className='order-button' onClick={() => this.props.dispatch({ type: 'ADD' })}>ĐẶT NGAY</Button>
+            <div className='order-button' onClick={() => this.props.dispatch({ type: 'ADD' })}>ĐẶT NGAY</div>
 
           </div>
           <section className='Section' id='Content_section'>
@@ -103,22 +103,19 @@ class App extends Component {
             <Navbar className="Navbar"  >
 
               <Nav >
-                <NavItem eventKey={1} href="#"  ><Link className='Link' to="/ListProduct" >Sản phẩm</Link></NavItem>
-                <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Khuyến mãi</Link></NavItem>
+                <NavItem eventKey={1} href="/ListProduct">Sản phẩm</NavItem>
+                <NavItem eventKey={2} href="/ListProduct" >Khuyến mãi</NavItem>
                 <Navbar.Brand >
                   <a href="/" >HauyMilk </a>
                 </Navbar.Brand>
-                <NavItem eventKey={3} href="#"><Link className='Link' to="/ListProduct" >Thực đơn hàng ngày</Link></NavItem>
-                <NavItem eventKey={2} href="#"><Link className='Link' to="/ListProduct" >Liên hệ</Link></NavItem>
+                <NavItem eventKey={3} href="/ListProduct" >Thực đơn hàng ngày</NavItem>
+                <NavItem eventKey={2} href="/ListProduct" >Liên hệ</NavItem>
 
               </Nav>
             </Navbar>
           
           </div>
-          <div className="Cart-button" style={{
-            backgroundImage: "url("+cart_ico+")",
-            backgroundSize: 'cover',
-          }}/>
+          <Cart_button totalQuantity={this.props.totalQuantity} />
         </div>
       </Router>
     );
@@ -126,7 +123,7 @@ class App extends Component {
 }
 
 function mapState2Props(state) {
-  return { num: state.num };
+  return { num: state.num,totalQuantity:state.totalQuantity };
 }
 
 export default connect(mapState2Props)(App);

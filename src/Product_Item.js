@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Panel } from 'react-bootstrap';
 
-import background from './Assets/item_bg.jpg';
+
 import './Product_Item.css';
 
 import {connect } from 'react-redux';

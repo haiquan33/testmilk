@@ -6,15 +6,19 @@ import ProductItem from './Product_Item.js';
 
 import './ListProduct.css';
 class ListProduct extends Component{
+ 
+   
     render(){
         return(
-        <div className='List-container' >
+        
+        <div className='List-container'  >
           {
               this.props.product_list.map((item)=>
                 <ProductItem item={item}/>
               )
           }
         </div>
+     
         )
     }
 }

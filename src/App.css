@@ -8,9 +8,9 @@
   min-height: 60px;
 
   background-color:  rgba(255, 200, 89, 0.733);
-
+  border-radius: 10px;
   position: absolute;
-  
+
 
 
 
@@ -24,8 +24,17 @@
   
   font-family: iCiel-Altus;
   font-size: 30px;
+
+  transition: all ease .5s;
+  user-select: none;
 }
 
+
+.order-button:active{
+  
+  background: white;
+  zoom: 1.1;
+}
 .logo{
   position: fixed;
   
@@ -68,10 +77,15 @@
   position: fixed;
   top:5px;
   right:15px;
-
+  transition: all ease .5s;
 }
 
-
+.Cart-button:active{ 
+  opacity: 0.2;
+  width: 45px;
+  height: 45px;
+  transition: all ease .5s;
+}
 .Navbar{
 
   background-color:  rgba(255, 200, 89, 0);
@@ -79,21 +93,21 @@
 
   width: 100%;
   visibility: initial;
-  transition: all ease .5s;
+
  
 } 
 
 .navbar-default .container {
   display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  align-items: center ;
+  align-content: center ;
+  justify-content: center ;
  
 } 
 .navbar-default .navbar-nav  {
   display: flex;
-  align-items: center;
-  align-content: center;
+  align-items: center ;
+  align-content: center ;
   justify-content: center;
 
 }
@@ -102,6 +116,8 @@
   color: white;
   width: 100px;
   padding: 0;
+  font-family: iCielNovecentosans-Medium;
+  font-size: 15px;
 
 }
 .navbar-default .navbar-nav .navbar-brand {
@@ -110,13 +126,7 @@
   font-size: 40px;
 }
 
-.Link{
-  color: white;
-  font-family: iCielNovecentosans-Medium;
-  font-size: 15px;
 
-
-}
 
 
 .App {
